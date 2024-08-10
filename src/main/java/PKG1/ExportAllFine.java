@@ -28,7 +28,7 @@ public class ExportAllFine extends HttpServlet {
 			PreparedStatement st = conn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
 
-			String PDFFileName = "C:\\Users\\Manish\\Desktop\\LibPDF\\All_FineData.pdf";
+			String PDFFileName = System.getProperty("user.home") + "/Documents/PCPS/All_FineData.pdf";
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(PDFFileName));
 			document.open();

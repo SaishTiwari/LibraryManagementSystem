@@ -30,7 +30,7 @@ public class ExportIndu extends HttpServlet {
 
             if (rg != null) {
                 // Define the output PDF file
-                String PDFFileName = "C:\\Users\\Manish\\Desktop\\LibPDF\\User_" + rg.getUID() + ".pdf";
+            	String PDFFileName = System.getProperty("user.home") + "/Documents/PCPS/User_" + rg.getUID() + ".pdf";
                 Document document = new Document();
 
                 // Initialize PDF writer

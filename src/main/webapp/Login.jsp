@@ -1,13 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8a6f1db44c.js" crossorigin="anonymous"></script>
-    
-    <title>Library Management System</title>
+
+    <title>Pustak-A-Laya - Library Management System</title>
     <link rel="icon" href="/MainLibraryProject/Company.png" type="image/png">
 
     <style>
@@ -21,42 +21,128 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column;
             height: 100vh;
             background: #000;
             overflow: hidden;
-            position: relative; /* Make sure the video is positioned relative to the body */
+            position: relative;
+            color: white;
+            text-align: center;
         }
 
         .video-background {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 100%; /* Set width to 100% of its container */
-            height: auto; /* Maintain aspect ratio */
-            max-width: 1200px; /* Limit maximum width */
-            max-height: 100vh; /* Limit maximum height */
-            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transform: translate(-50%, -50%);
             z-index: -1;
-            padding: 20px; /* Optional padding */
-            box-sizing: border-box;
+            filter: brightness(50%);
+        }
+
+        .header, .features, .cta {
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .header {
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 50px;
+            color: #ff4500;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #ff9966;
+            margin: 10px 0 30px;
+        }
+
+        .features {
+            z-index: 1;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap; /* Ensures boxes wrap to the next line if necessary */
+            width: 80%;
+            margin-bottom: 40px;
+            gap: 20px; /* Adds space between the feature boxes */
+            padding: 10px;
+        }
+
+        .feature {
+            background-color: rgba(255, 245, 230, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            flex: 1 1 30%; /* Allows boxes to resize while maintaining 3-per-row layout */
+            max-width: 30%; /* Prevents the boxes from growing too large */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .feature {
+                flex: 1 1 45%; /* Reduces the box width on smaller screens */
+                max-width: 45%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .feature {
+                flex: 1 1 100%; /* Stacks the boxes vertically on very small screens */
+                max-width: 100%;
+            }
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            color: #ff4500;
+            margin-bottom: 10px;
+        }
+
+        .feature p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .cta {
+            z-index: 1;
+            margin-top: 20px;
+        }
+
+        .cta button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff4500;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta button:hover {
+            background-color: #cc3300;
         }
 
         .login {
-            background-color: rgba(255, 245, 230, 0.9); /* Semi-transparent background */
+            background-color: rgba(255, 245, 230, 0.9);
             border-radius: 20px;
             padding: 50px;
             text-align: center;
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
             max-width: 450px;
             width: 100%;
-            position: relative;
-            transform: scale(1);
-            transition: transform 0.3s ease;
-        }
-
-        .login:hover {
-            transform: scale(1.05);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            z-index: 2;
         }
 
         .textarea {
@@ -81,20 +167,6 @@
             font-size: 30px;
             color: #ff4500;
             margin-bottom: 30px;
-            position: relative;
-            animation: slideIn 0.6s ease-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideIn {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         a {
@@ -176,24 +248,6 @@
             animation: shake 0.3s ease;
         }
 
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-            25% {
-                transform: translateX(-5px);
-            }
-            50% {
-                transform: translateX(5px);
-            }
-            75% {
-                transform: translateX(-5px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
         .check {
             display: flex;
             justify-content: space-between;
@@ -212,12 +266,48 @@
             accent-color: #ff6347;
         }
     </style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/8a6f1db44c.js" crossorigin="anonymous"></script>
+
+    <title>Pustak-A-Laya - Library Management System</title>
+    <link rel="icon" href="/MainLibraryProject/Company.png" type="image/png">
+
 </head>
+
 <body>
     <video class="video-background" autoplay muted loop>
         <source src="LibVideo.mp4" type="video/mp4">
-
     </video>
+
+    <div class="header" id="header">
+        <h1>Welcome to Pustak-A-Laya</h1>
+        <p>Your Ultimate Library Management System</p>
+    </div>
+
+    <div class="features" id="features">
+        <div class="feature">
+            <h3>Manage Books</h3>
+            <p>Easily add, remove, and categorize books in the library's inventory.</p>
+        </div>
+        <div class="feature">
+            <h3>User Management</h3>
+            <p>Track active users, their activities, and manage user data effortlessly.</p>
+        </div>
+        <div class="feature">
+            <h3>Requests & Returns</h3>
+            <p>Handle book requests and returns smoothly with an intuitive interface.</p>
+        </div>
+    </div>
+
+    <div class="cta" id="cta">
+        <button onclick="showLogin()">Get Started</button>
+    </div>
+
     <div class="login">
         <h1>Library Login</h1>
         <form action='RecieveLoginData' method='post'>
@@ -226,24 +316,40 @@
             <p class='check'><span><input type="checkbox" name='addCookie' value='yes'>Remember me</span><a href='MailSend.jsp'>Forgot Password?</a></p>
             <button type='submit'>Login</button>
             <p><a href='RegisterUser.jsp'>Don't have an account? Sign up</a></p>
-            
-            <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        let eyeicon = document.getElementById('eyeicon');
-        let password = document.getElementById('password');
-        eyeicon.addEventListener('click', () => {
-            if (password.type === 'password') {
-                password.type = 'text';
-                eyeicon.classList.remove('fa-eye-slash');
-                eyeicon.classList.add('fa-eye');
-            } else {
-                password.type = 'password';
-                eyeicon.classList.remove('fa-eye');
-                eyeicon.classList.add('fa-eye-slash');
-            }
-        });
-    });
-</script>
-</body>
-</html>
 
+        <!-- Sign Up button that redirects to RegisterUser.jsp -->
+        <button onclick="window.location.href='RegisterUser.jsp'" style="background-color: #ff9966; margin-top: 10px;">Sign Up</button>
+    </div>
+
+    <script>
+    
+    function showLogin() {
+        const loginBox = document.querySelector('.login');
+        const header = document.getElementById('header');
+        const features = document.getElementById('features');
+        const cta = document.getElementById('cta'); 
+        
+        loginBox.style.transform = 'translate(-50%, -50%) scale(1)';
+        loginBox.style.opacity = '1';
+        header.style.opacity = '0';
+        header.style.transform = 'translateY(-30px)';
+        features.style.opacity = '0';
+        features.style.transform = 'translateY(-30px)';
+        cta.style.opacity = '0';
+        cta.style.transform = 'translateY(-30px)';
+    }
+        function togglePassword() {
+            const passwordField = document.querySelector('.password-container input');
+            const eyeIcon = document.querySelector('.password-container i');
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.classList.replace('fa-eye', 'fa-eye-slash');
+            } else {
+                passwordField.type = "password";
+                eyeIcon.classList.replace('fa-eye-slash', 'fa-eye');
+            }
+        }
+    </script>
+</body>
+
+</html>

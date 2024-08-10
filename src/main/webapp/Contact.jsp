@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8a6f1db44c.js" crossorigin="anonymous"></script>
-    <title>Library Management System</title>
+    <title>Contact Us - Library Management System</title>
     <link rel="icon" href="Company.png" type="image/png">
 
     <style>
@@ -92,64 +92,63 @@
             display: block;
         }
 
-        .helpbox {
+        .contact-container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: calc(100vh - 80px); /* Adjust height based on the nav height */
-            padding: 20px;
+            padding-top: 100px;
+            padding-bottom: 50px;
+            margin: 0 20px;
         }
 
-        .box {
+        .contact-info, .map-container {
             background: #fff;
             color: #333;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             text-align: center;
-            max-width: 600px;
+            max-width: 800px;
             width: 100%;
+            margin-bottom: 30px;
         }
 
-        .box p {
+        .contact-info p {
             margin: 15px 0;
             font-size: 18px;
         }
 
-        .box .link {
+        .contact-info .link {
             color: #ff6347;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
-        .box .link:hover {
+        .contact-info .link:hover {
             color: #cc3300;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+            border-radius: 10px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .nav ul {
-                flex-direction: column;
-                align-items: flex-start;
+            .contact-container {
+                margin: 0 10px;
             }
 
-            .nav ul li {
-                margin: 5px 0;
-            }
-
-            .nav .dropdown-content {
-                position: static;
-                box-shadow: none;
-            }
-
-            .helpbox {
-                height: auto;
-                padding: 15px;
-            }
-
-            .box {
+            .contact-info, .map-container {
                 padding: 20px;
+            }
+
+            .map-container iframe {
+                height: 300px;
             }
         }
     </style>
@@ -181,11 +180,14 @@
         </div>
     </div>
 
-    <div class='helpbox'>
-        <div class='box'>
-            <p>Mail: <a class='link' href='https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRlRZMKCnXjJxlbqGBHdgnfXpWpdxKQhlRdlxsJndCbdlChpKtNtsHRrGGgZhpfQwcqjwtb'> connect@patancollege.org</a></p>
+    <div class="contact-container">
+        <div class="contact-info">
+            <p>Mail: <a class="link" href="mailto:connect@patancollege.org">connect@patancollege.org</a></p>
             <p>Phone: 01-5181033</p>
-            <p>Address: <a class='link' href='https://www.google.com/maps/place/Patan+College+For+Professional+Studies/@27.6844649,85.3144361,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb19b5ad9b8dff:0x12a4b82675e789a3!8m2!3d27.6844602!4d85.317011!16s%2Fg%2F11dxkz07qw?entry=ttu'>Kupondole Rd 162, Patan 44700, Lalitpur 44700</a></p>
+            <p>Address: <a class="link" href="https://www.google.com/maps/place/Patan+College+For+Professional+Studies/@27.6844649,85.3144361,17z/data=!3m1!4b1!4m6!3m5!1s0x39eb19b5ad9b8dff:0x12a4b82675e789a3!8m2!3d27.6844602!4d85.317011!16s%2Fg%2F11dxkz07qw?entry=ttu" target="_blank">Kupondole Rd 162, Patan 44700, Lalitpur 44700</a></p>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.094250701084!2d85.3144361!3d27.6844602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19b5ad9b8dff%3A0x12a4b82675e789a3!2sPatan%20College%20For%20Professional%20Studies!5e0!3m2!1sen!2snp!4v1597652068357!5m2!1sen!2snp" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
 

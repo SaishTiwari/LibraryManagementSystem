@@ -8,22 +8,45 @@
     <script src="https://kit.fontawesome.com/8a6f1db44c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="LiberianDashboard.css">
     <title>Library Management System</title>
-   <link rel="icon" href="Company.png" type="image/png">
+    <link rel="icon" href="Company.png" type="image/png">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            background-image: url('liberainDash.avif');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
         }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1;
+        }
+
+        .nav, .main-content, .image {
+            position: relative;
+            z-index: 2;        }
 
         .nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4a90e2;
+            background-color: rgba(74, 144, 226, 0.8); 
             color: #fff;
             padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .nav .flexleft {
@@ -57,114 +80,91 @@
             text-decoration: underline;
         }
 
-        .nav .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            color: #000;
+        .main-content {
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.8); 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 5px;
-            padding: 10px;
-            list-style: none;
-            margin: 0;
-            top: 100%;
-            left: 0;
+            border-radius: 10px;
+            width: 90%;
+            margin-top: 20px;
+            color: #333;
         }
 
-        .nav .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .nav .dropdown-content li a {
-            color: #000;
-            text-decoration: none;
-        }
-
-        .nav .dropdown-content li a:hover {
-            text-decoration: underline;
-        }
-
-        .image {
-            background-color: #ddd;
-            padding: 20px;
+        .main-content h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 28px;
             text-align: center;
         }
 
-        .content {
-            padding: 20px;
-        }
-
-        .search {
+        .cards {
             display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             justify-content: center;
-            margin-bottom: 20px;
         }
 
-        .search input[type="text"] {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            width: 300px;
-        }
-
-        .search button {
-            background-color: #4a90e2;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
+        .card {
+            background-color: rgba(74, 144, 226, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: calc(33.333% - 40px);
+            text-align: center;
             transition: background-color 0.3s, transform 0.2s;
+            color: #fff;
         }
 
-        .search button:hover {
-            background-color: #357ABD;
+        .card:hover {
+            background-color: rgba(53, 122, 189, 0.9); 
             transform: scale(1.05);
         }
 
-        .links {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .links a {
-            display: block;
-            color: #4a90e2;
+        .card a {
+            color: #fff;
             text-decoration: none;
-            font-size: 18px;
-            margin: 10px 0;
-            transition: color 0.3s;
+            display: block;
+            font-size: 20px;
         }
 
-        .links a:hover {
-            color: #357ABD;
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        .card p {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .image {
+            background-color: rgba(221, 221, 221, 0.8); /* Semi-transparent image background */
+            padding: 20px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 10px;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
+    <div class="overlay"></div> <!-- Overlay for darkening the background -->
+
     <div class="nav">
         <div class="flexleft">
-            <a href="LiberianDashboard.jsp"><img src="greatgatsby.jpeg" width="190" height="60" class="img"></a>
+            <a href="LiberianDashboard.jsp"><img src="Logo.png" width="190" height="60" class="img"></a>
             <ul>
                 <li><a href="LiberianDashboard.jsp">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Books</a>
-                    <ul class="dropdown-content">
-                        <li><a href="AllBooks.jsp">All Books</a></li>
-                    
-                        <li><a href="#">Fiction</a></li>
-                        <li><a href="#">Educational</a></li>
-                        <li><a href="#">Sci-Fi</a></li>
-                        <li><a href="#">Biography</a></li>
-                        <li><a href="#">History</a></li>
-                        <li><a href="#">Fantasy</a></li>
-                    </ul>
-                </li>
-                <li><a href="UserStatus.jsp">User Status</a></li>
+                <li><a href="AllBooks.jsp">All Books</a></li>
+                <li><a href="SearchData">User Status</a></li>
                 <li><a href="AddBooks.jsp">Add Books</a></li>
-                <li><a href="IssueBook.jsp">Issue Book</a></li>
-                <li><a href="ViewRequestData.jsp">User Requests</a></li>
+                <li><a href="ViewRequestData">User Requests</a></li>
             </ul>
         </div>
         <div class="flexright">
@@ -174,27 +174,33 @@
         </div>
     </div>
 
-    <div class="image">
-        <div class="imageslider">
-            <!-- Add slider images or content here -->
-        </div>
-    </div>
+    <div class="main-content">
+        <h2>Welcome to the Library Management Dashboard</h2>
 
-    <div class="content">
-        <div class="search">
-            <form action="#" method="post">
-                <input type="text" name="book" placeholder="Search Books" required>
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </form>
+        <div class="cards">
+            <div class="card">
+                <a href="AllBooks.jsp">
+                    <h3>Total Books</h3>
+                    <p>10,000+</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="SearchData">
+                    <h3>Active Users</h3>
+                    <p>1,200+</p>
+                </a>
+            </div>
+            <div class="card">
+                <a href="ViewRequestData">
+                    <h3>Pending Requests</h3>
+                    <p>45</p>
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="links">
-        <a href='AddBooks.jsp'>Add Books</a>
-        <a href='ViewRequestData'>Borrow Requests</a>
-        <a href='SearchData'>User List Edit</a>
-        <a href='SearchBookData'>Book Status</a>
-        <a href='FineSearch'>Fine Tracking</a>
+        <div class="image">
+            <img src="liberainDash.avif" alt="Library Image">
+        </div>
     </div>
 
     <script>

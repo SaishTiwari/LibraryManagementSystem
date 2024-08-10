@@ -30,8 +30,8 @@ public class BookExportIndu extends HttpServlet {
 
             if (book != null) {
                 // Define the output PDF file
-                String PDFFileName = "C:\\Users\\Manish\\Desktop\\LibPDF\\Book_" + book.getISBN() + ".pdf";
-                Document document = new Document();
+            	String PDFFileName = System.getProperty("user.home") + "/Documents/PCPS/Book_" + book.getISBN() + ".pdf";
+            	Document document = new Document();
 
                 // Initialize PDF writer
                 PdfWriter.getInstance(document, new FileOutputStream(PDFFileName));

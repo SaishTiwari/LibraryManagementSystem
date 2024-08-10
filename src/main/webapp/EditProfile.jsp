@@ -7,13 +7,21 @@
 <%@ page import="PKG1.Register" %>
 <!--UserType Checking-->
 <%
-	int currentID = GlobalVar.userid;
-	if(currentID == 0){
-		currentID = (Integer)request.getAttribute("userid");
-	}
-	Register rg = new ProcessManager().fetchData(currentID);
-	String decryptedPassword = "";
-	try {
+    int currentID = GlobalVar.userid;
+    if(currentID == 0) {
+        Object useridAttr = request.getAttribute("userid");
+        if (useridAttr != null) {
+            currentID = (Integer) useridAttr;
+        } else {
+            // Handle the situation when userid is not set
+            out.println("User ID is not set in the request.");
+            return;
+        }
+    }
+    
+    Register rg = new ProcessManager().fetchData(currentID);
+    String decryptedPassword = "";
+    try {
         if (rg.getPassword() != null) {
             decryptedPassword = new EncryptAndDecrypt().decrypt_data(rg.getPassword());
         }
@@ -213,7 +221,7 @@
                         <li><a href="#">Sci-Fi</a></li>
                     </ul>
                 </li>
-                <li><a href="LibaryStatus.jsp">Library Status</a></li>
+
                 <li><a href="Contact.jsp">Contact</a></li>
             </ul>
         </div>

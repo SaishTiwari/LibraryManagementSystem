@@ -6,159 +6,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/8a6f1db44c.js" crossorigin="anonymous"></script>
-    <title>Libary Management System</title>
+    <title>Library Management System</title>
     <link rel="icon" href="Company.png" type="image/png">
-	<style>
-		@charset "ISO-8859-1";
-body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    background-image: linear-gradient(120deg,purple,cyan);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-}
+    <style>
+        @charset "ISO-8859-1";
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+            background-color: #b3e5fc; /* Light blue background */
+            color: #000000; /* Black text */
+        }
 
-.nav {
-    display: flex;
-    justify-content: space-between;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border:1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #0288d1; /* Strong blue background */
+            border-bottom: 2px solid #ffffff; /* White border */
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
 
-.flexleft {
-    display: flex;
-}
+        .flexleft, .flexright {
+            display: flex;
+            align-items: center;
+        }
 
-ul {
-    display: flex;
-    gap: 18px;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-}
+        .flexright ul {
+            display: flex;
+            gap: 15px;
+            list-style: none;
+        }
 
-a {
-    text-decoration: none;
-    color: white;
-}
+        ul {
+            display: flex;
+            gap: 20px;
+            padding: 10px;
+            list-style: none;
+            align-items: center;
+        }
 
-.img {
-    padding-top: 7px;
-}
+        ul li {
+            position: relative;
+        }
 
-i {
-    padding-right: 6px;
-}
+        ul li a {
+            text-decoration: none;
+            color: #ffffff; /* White text */
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 8px 12px;
+            transition: background 0.3s ease;
+        }
 
-li{
-    text-transform: uppercase ;
-}
+        ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: rgb(121, 115, 115);
-    min-width: 160px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    z-index: 1;
-}
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #0288d1; /* Strong blue background */
+            border-radius: 5px;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
 
-.dropdown-content li {
-    display: block;
-}
+        .dropdown-content li {
+            display: block;
+        }
 
-.dropdown-content li a {
-    padding: 10px 15px;
-}
+        .dropdown-content li a {
+            padding: 10px 15px;
+            text-align: left;
+            display: block;
+        }
 
-.dropdown-content li a:hover {
-    background-color: rgb(105, 100, 100);
-}
+        .dropdown-content li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
 
-.imageslider{
-    width: 50vw;
-    height: 40vh;
-    background-image: url(atomic.jpeg);
-    background-position: center;
-    background-repeat: no-repeat;
-    animation-name: image;
-    animation-duration: 6s;
-    animation-delay: 3s;
-    animation-iteration-count: infinite;
-}
+        .image {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 20px;
+        }
 
-@keyframes image {
-    0%   {background-image: url(harry.jpeg);}
-  50%  {background-image: url(lord.png);}
-  100% {background-image: url(silent.jpeg);}
-}
+        .image img {
+            width: 200px;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid #ffffff; /* White border */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease;
+        }
 
-.image{
-    display: flex;
-    justify-content: center;
-}
+        .image img:hover {
+            transform: scale(1.3);
+        }
 
-.imageslider{
-    border: 2px solid black;
-    margin-top: 10px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
+        .content {
+            display: flex;
+            justify-content: center;
+            margin: 35px 0;
+        }
 
-.content{
-    display: flex;
-    justify-content: center;
-    margin-top: 35px;
-}
+        .search {
+            display: flex;
+            align-items: center;
+            background-color: #ffffff; /* White background */
+            border-radius: 50px;
+            padding: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
 
-.search{
-    border: 3px solid white;
-    border-radius: 9px;
-}
+        .search input {
+            outline: none;
+            padding: 10px 20px;
+            width: 18em;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            color: #000000; /* Black text */
+            background: #b3e5fc; /* Light blue background */
+            margin-right: 10px;
+        }
 
-.search input{
-    outline: none;
-    padding: 5px;
-    width: 22em;
-    border: none;
-}
+        .search button {
+            border: none;
+            background: none;
+            color: #0288d1; /* Strong blue color */
+            font-size: 20px;
+            cursor: pointer;
+        }
 
-button{
-    border: none;
-}
+        .card {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
 
-form{
-    display: flex;
-}
+        .card a {
+            display: block;
+            background: #0288d1; /* Strong blue background */
+            padding: 15px 30px;
+            margin: 0 10px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            text-align: center;
+            transition: background 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            color: #ffffff; /* White text */
+        }
 
-		
-	</style>
+        .card a:hover {
+            background: #01579b; /* Darker blue */
+        }
+
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .flexleft ul, .flexright ul {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .image {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .search input {
+                width: 100%;
+            }
+
+            .card {
+                flex-direction: column;
+            }
+
+            .card a {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="nav">
         <div class="flexleft">
-            <a href="ClientSite.jsp"><img src="Logo.png" width="190" height="60" class="img"></a>
+            <a href="ClientSite.jsp"><img src="Logo.png" width="150" height="50" class="img"></a>
             <ul>
                 <li><a href="ClientSite.jsp">Home</a></li>
                 <li class="dropdown">
-                    <a href="#">Book</a>
+                    <a href="AllBooks.jsp">Book</a>
                     <ul class="dropdown-content">
                         <li><a href="#">Fiction</a></li>
                         <li><a href="#">Non-Fiction</a></li>
                         <li><a href="#">Sci-Fi</a></li>
                     </ul>
                 </li>
-                <li><a href="LibaryStatus.jsp">LibaryStatus</a></li>
+                <li><a href="RequestBook">Request Book</a></li>
                 <li><a href="Contact.jsp">Contact</a></li>
             </ul>
         </div>
@@ -171,8 +235,10 @@ form{
     </div>
 
     <div class="image">
-        <div class="imageslider">
-        </div>
+        <img src="harry.jpeg" alt="Harry Potter">
+        <img src="lord.jpeg" alt="Lord of the Rings">
+        <img src="silent.jpeg" alt="The Silent Patient">
+        <img src="murakami.jpeg" alt="Another Book">
     </div>
 
     <div class="content">
@@ -182,19 +248,17 @@ form{
                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
             </form>
         </div>
-        
-        
     </div>
-    
+
     <div class="card">
-			<a href='RequestBook'>RequestBook</a><br><br>
-			<a href='BookStatus'>RequestStatus</a>
-        </div>
-    
+        <a href='RequestBook'>Request Book</a>
+        <a href='BookStatus'>Request Status</a>
+    </div>
+
     <script>
-	    function confirmLogout() {
-	        return confirm("Are you sure you want to log out?");
-	    }
+        function confirmLogout() {
+            return confirm("Are you sure you want to log out?");
+        }
     </script>
 </body>
 </html>

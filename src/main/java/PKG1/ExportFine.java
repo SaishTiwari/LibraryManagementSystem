@@ -26,7 +26,7 @@ public class ExportFine extends HttpServlet {
 
             if (rg != null) {
                 // Define the output PDF file
-                String PDFFileName = "C:\\Users\\Manish\\Desktop\\LibPDF\\Fine_" + rg.getUid() + ".pdf";
+            	String PDFFileName = System.getProperty("user.home") + "/Documents/PCPS/Fine_" + rg.getUid() + ".pdf";
                 Document document = new Document();
 
                 // Initialize PDF writer

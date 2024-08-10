@@ -26,8 +26,7 @@ public class ExportAllUser extends HttpServlet {
 			Connection conn = new DatabaseConnection().connect();
 			PreparedStatement st = conn.prepareStatement(sql);
 			ResultSet rs = st.executeQuery();
-
-			String PDFFileName = "C:\\Users\\Manish\\Desktop\\LibPDF\\All_Users.pdf";
+			String PDFFileName = System.getProperty("user.home") + "/Documents/PCPS/All_Users.pdf";
 			Document document = new Document();
 			PdfWriter.getInstance(document, new FileOutputStream(PDFFileName));
 			document.open();
