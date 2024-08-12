@@ -10,8 +10,11 @@
     <link rel="icon" href="/MainLibaryProject/Company.png" type="image/png">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('background-image.jpg'); /* Add your background image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             margin: 0;
             padding: 0;
             display: flex;
@@ -21,19 +24,26 @@
         }
 
         .MailBlock {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            max-width: 450px;
+            width: 90%;
             text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .MailBlock:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
 
         .MailBlock h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            color: #4a90e2;
+            margin-bottom: 25px;
+            font-size: 28px;
+            letter-spacing: 1px;
         }
 
         .MailBlock form {
@@ -42,27 +52,50 @@
         }
 
         .MailBlock input[type="email"] {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 16px;
+            padding: 12px;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .MailBlock input[type="email"]:focus {
+            border-color: #357ABD;
         }
 
         .MailBlock button {
             background-color: #4a90e2;
             color: #ffffff;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: 12px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s, transform 0.2s;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .MailBlock button:hover {
             background-color: #357ABD;
-            transform: scale(1.05);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .MailBlock {
+                padding: 30px;
+                max-width: 100%;
+            }
+
+            .MailBlock h1 {
+                font-size: 24px;
+            }
+
+            .MailBlock input[type="email"], .MailBlock button {
+                font-size: 16px;
+                padding: 10px;
+            }
         }
     </style>
 </head>

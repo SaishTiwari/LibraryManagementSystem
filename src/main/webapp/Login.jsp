@@ -285,7 +285,7 @@
     </video>
 
     <div class="header" id="header">
-        <h1>Welcome to Pustak-A-Laya</h1>
+        <h1>Welcome to E-Pustakalaya</h1>
         <p>Your Ultimate Library Management System</p>
     </div>
 
